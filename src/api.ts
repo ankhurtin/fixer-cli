@@ -1,18 +1,4 @@
-import appRoot from 'app-root-path';
-import * as dotenv from 'dotenv';
-
-const ROOT = appRoot.path;
-
-const PUBLIC_ENV = dotenv.config({
-  path: ROOT + '/public.env',
-}).parsed;
-
-const API_KEY =
-  process.env.NODE_ENV == 'development'
-    ? dotenv.config().parsed?.API_KEY
-    : PUBLIC_ENV?.API_KEY;
-
-const URL = PUBLIC_ENV?.URL as string;
+import { URL, API_KEY } from './configs';
 
 class FixerAPI {
   private url;
@@ -28,6 +14,10 @@ class FixerAPI {
       this.url + `convert?to=${currency}&from=${base}&amount=${amount}`,
       this.getFetchConfig()
     );
+
+    if (data.status !== 200) {
+      throw new Error('Response failed. Pls, check your api key or try later.');
+    }
     const response = await data.json();
 
     return response;
@@ -35,6 +25,10 @@ class FixerAPI {
 
   public async getInfo() {
     const data = await fetch(this.url + 'symbols', this.getFetchConfig());
+    console.log(data, this.key, 'data key');
+    if (data.status !== 200) {
+      throw new Error('Response failed. Pls, check your api key or try later.');
+    }
     const response = await data.json();
 
     return response;
@@ -56,6 +50,4 @@ class FixerAPI {
   }
 }
 
-const fixerAPI = new FixerAPI(URL, API_KEY as string);
-
-export { ROOT, PUBLIC_ENV, URL, API_KEY, fixerAPI };
+export const fixerAPI = new FixerAPI(URL, API_KEY as string);

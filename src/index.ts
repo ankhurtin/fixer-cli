@@ -1,10 +1,13 @@
+#!/usr/bin/env node
 import { program } from 'commander';
 import * as Commands from './commands';
+
+program.name('fixercli').version(process.version);
 
 program
   .command('key')
   .argument('<key>', 'key for Fixer API')
-  .action(Commands.info);
+  .action(Commands.key);
 
 program
   .command('info')

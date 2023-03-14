@@ -1,13 +1,16 @@
 {
-  "name": "fixer-cli",
+  "name": "fixercli",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./bin/index.js",
+  "bin": {
+    "fixercli": "./bin/index.js"
+  },
   "scripts": {
-    "start": "yarn build && NODE_ENV=development node dist/index.js",
-    "dev": "yarn build && NODE_ENV=development node --inspect-brk dist/index.js",
+    "start": "yarn build && NODE_ENV=development node bin/index.js",
+    "dev": "yarn build && NODE_ENV=development node --inspect-brk bin/index.js",
     "type-check": "tsc --noEmit && eslint \"**/*.{js,ts}\" .",
-    "build": "tsc --outDir ./dist"
+    "build": "tsc --outDir ./bin"
   },
   "author": "",
   "license": "ISC",

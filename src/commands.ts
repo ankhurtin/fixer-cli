@@ -1,4 +1,5 @@
 import { fixerAPI } from './api';
+import fs from 'fs';
 
 const convert = async (base: string, currency: string, amount: number) => {
   const response = await fixerAPI.getConvert(base, currency, amount);
@@ -16,8 +17,9 @@ const info = async () => {
   console.table(Object.keys(symbols).map((e) => [e, symbols[e]]));
 };
 
-const key = (key: string) => {
-  console.log(key);
+const key = async (key: string) => {
+  await fs.promises.writeFile('key.txt', key);
+  console.log('Your key succesfull added.');
 };
 
 export { convert, info, key };
