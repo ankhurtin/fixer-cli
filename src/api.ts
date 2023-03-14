@@ -25,7 +25,7 @@ class FixerAPI {
 
   public async getInfo() {
     const data = await fetch(this.url + 'symbols', this.getFetchConfig());
-    console.log(data, this.key, 'data key');
+
     if (data.status !== 200) {
       throw new Error('Response failed. Pls, check your api key or try later.');
     }
