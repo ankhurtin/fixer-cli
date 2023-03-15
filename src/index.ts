@@ -2,7 +2,7 @@
 import { program } from 'commander';
 import * as Commands from './commands';
 
-program.name('fixercli').version(process.version);
+program.name('fixer-cli').version('1.0.0');
 
 program
   .command('key')

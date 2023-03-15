@@ -1,10 +1,10 @@
 {
-  "name": "fixercli",
+  "name": "fixer-cli",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple currency converter utility based on the Fixer.io API",
   "main": "./bin/index.js",
   "bin": {
-    "fixercli": "./bin/index.js"
+    "fixer-cli": "./bin/index.js"
   },
   "scripts": {
     "start": "yarn build && NODE_ENV=development node bin/index.js",
@@ -12,7 +12,7 @@
     "type-check": "tsc --noEmit && eslint \"**/*.{js,ts}\" .",
     "build": "tsc --outDir ./bin"
   },
-  "author": "",
+  "author": "Andrei Khurtin",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.15.0",

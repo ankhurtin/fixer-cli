@@ -26,8 +26,7 @@ fixer-cli key your_key
 Now you can use fixer-cli
 
 ```sh
-fixer-cli сonvert usd eur 1500
-fixer-cli rub usd
+fixer-cli convert usd eur 1500
 fixer-cli info
 ```
 
